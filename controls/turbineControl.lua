@@ -6,7 +6,7 @@
 -----Modified by Wolf1596Games
 -----------------------------------------------
 
-version = 1.1
+version = 1.2
 term.clear()
 -------------------FORMATTING-------------------------------
 function clear()
@@ -143,7 +143,7 @@ function homepage()
 		terminal_screen()
 
 		active = turbine.getActive()
-		energy_stored = turbine0.getEnergyStats().energyStored
+		energy_stored = turbine.getEnergyStats().energyStored
 		
 
 		--------POWER STAT--------------
