@@ -6,7 +6,7 @@
 --  Modified by Wolf1596Games
 -----------------------------------------------
 
-local version = 1.0.0
+local version = 1.1
 --is auto power enabled 
 local auto_string = false 
 --auto on value
