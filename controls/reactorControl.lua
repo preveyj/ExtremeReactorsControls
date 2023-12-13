@@ -27,6 +27,21 @@ local battery
 local monX
 local monY
 
+---------------GitHub download info----------
+--To get files from GitHub, use the "wget <file url> <local file name>" command. 
+baseUrl = "https://raw.githubusercontent.com/preveyj/ExtremeReactorsControls/master/"
+installerFile = "installer.lua"
+
+reactorControlFile = "reactorControl.lua"
+turbineControlFile = "turbineControl.lua"
+
+reactorStartupFile = "reactorStartup.lua"
+turbineStartupFile = "turbineStartup.lua"
+
+reactorUpdateCheck = "reactorUpdateCheck.txt"
+turbineUpdateCheck = "turbineUpdateCheck.txt"
+---------------------------------------------
+
 term.clear()
 -------------------FORMATTING-------------------------------
 function clear()
@@ -661,7 +676,7 @@ function steam_mode()
     wait = read()
 end
 
-function install_update(program, pastebin)
+function install_update()
     clear()
     draw_line(4, 5, 22, colors.blue)
 
@@ -674,18 +689,19 @@ function install_update(program, pastebin)
     draw_text(5, 8, "terminal.", colors.black, colors.white)
 
     if fs.exists("install") then fs.delete("install") end
-    shell.run("pastebin get EWwJwiM3 install")
+    shell.run("wget "..baseUrl..installerFile.." install")
     shell.run("install")
 end
 
 function update()
     popup_screen(5, "Updates", 4)
-    draw_text(5, 7, "Connecting to", colors.black, colors.white)
-    draw_text(5, 8, "pastebin...", colors.black, colors.white)
+    draw_text(5, 7, "Connecting ...", colors.black, colors.white)
 
     sleep(0.5)
 
-    shell.run("pastebin get Xmfy1Dfc current_version.txt")
+    --reactor update check
+    shell.run("wget "..baseUrl..reactorUpdateCheck.." install")
+
     sr = fs.open("current_version.txt", "r")
     current_version = tonumber(sr.readLine())
     sr.close()

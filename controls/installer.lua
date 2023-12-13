@@ -76,7 +76,7 @@ end
 
 
 
-function install(program, pastebin)
+function install(program, fileName)
   term.clear()
   menu_bars()
 
@@ -105,8 +105,7 @@ function install(program, pastebin)
   end
 
   --remove program and fetch new copy
-  
-  shell.run("pastebin get "..pastebin.." "..program)
+  shell.run("wget "..baseUrl..fileName.." "..program)
 
   sleep(0.5)
 
@@ -126,10 +125,10 @@ function install(program, pastebin)
   end
   
 
-  if program == "reactor_control" then
-    shell.run("pastebin get "..reactor_startup.." startup")
-  elseif program == "turbine_control" then
-    shell.run("pastebin get "..turbine_startup.." startup")
+  if program == "reactorControl" then
+    shell.run("wget "..baseUrl..reactorStartupFile.." startup")
+  elseif program == "turbineControl" then
+    shell.run("wget "..baseUrl..turbineStartupFile.." startup")
   end
 
   if fs.exists(program) then
@@ -190,13 +189,9 @@ function selectProgram()
   input = read()
 
   if input == "1" then
-    install("reactor_control", reactor_control_pastebin)
+    install("reactorControl", reactorControlFile)
   elseif input == "2" then
-    install("turbine_control", turbine_control_pastebin)
-  elseif input == "dev1" then
-    install("reactor_control", dev_reactor_control_pastebin)
-  elseif input == "dev2" then
-    install("turbine_control", dev_turbine_control_pastebin)
+    install("turbineControl", turbineControlFile)
   else
     draw_text_term(1, 12, "please enter a '1' or '2'.", colors.red, colors.black)
     sleep(1)
@@ -210,7 +205,7 @@ function start()
   
   if fs.exists("config.txt") then
   
-    if fs.exists("reactor_control") then
+    if fs.exists("reactorControl") then
       draw_text_term(2, 3, "Current Program:", colors.white, colors.black)
       draw_text_term(2, 4, "Reactor Control", colors.lime, colors.black)
       draw_text_term(1, 6, "Do you want to update this program? (y/n)", colors.white, colors.black)
@@ -219,7 +214,7 @@ function start()
       term.setTextColor(colors.white)
       input = read()
       if input == "y" then
-        install("reactor_control", reactor_control_pastebin)
+        install("reactorControl", reactorControlFile)
       elseif input == "n" then
         selectProgram()
       else
@@ -228,7 +223,7 @@ function start()
         start()
       end
       
-    elseif fs.exists("turbine_control") then
+    elseif fs.exists("turbineControl") then
       draw_text_term(2, 3, "Current Program:", colors.white, colors.black)
       draw_text_term(2, 4, "Turbine Control", colors.lime, colors.black)
       draw_text_term(1, 6, "Do you want to update this program? (y/n)", colors.white, colors.black)
@@ -237,7 +232,7 @@ function start()
       term.setTextColor(colors.white)
       input = read()
       if input == "y" then
-        install("turbine_control", turbine_control_pastebin)
+        install("turbineControl", turbineControlFile)
       elseif input == "n" then
         selectProgram()
       else

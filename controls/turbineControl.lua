@@ -466,19 +466,18 @@ function install_update(program, pastebin)
 		draw_text(5, 8, "terminal.", colors.black, colors.white)
 
 		if fs.exists("install") then fs.delete("install") end
-		shell.run("pastebin get EWwJwiM3 install")
+		shell.run("wget "..baseUrl..installerFile.." install")
 		shell.run("install")
 
 end
 
 function update()
 	popup_screen(5, "Updates", 4)
-	draw_text(5, 7, "Connecting to", colors.black, colors.white)
-	draw_text(5, 8, "pastebin...", colors.black, colors.white)
+	draw_text(5, 7, "Connecting ...", colors.black, colors.white)
 
 	sleep(0.5)
 	
-	shell.run("pastebin get XmsSWZEi current_version.txt") --turbine control version
+    shell.run("wget "..baseUrl..turbine_update_check.." install")
 	sr = fs.open("current_version.txt", "r")
 	current_version = tonumber(sr.readLine())
 	sr.close()
