@@ -24,7 +24,7 @@ turbine_update_check = "XmsSWZEi" --turbineUpdateCheck.txt
 
 ---------------GitHub download info----------
 --To get files from GitHub, use the "wget <url> <filename>" command.  For use in this 
-baseUrl = "https://raw.githubusercontent.com/preveyj/ExtremeReactorsControls/master/"
+baseUrl = "https://raw.githubusercontent.com/preveyj/ExtremeReactorsControls./master/controls/"
 installerFile = "installer.lua"
 
 reactorControlFile = "reactorControl.lua"
