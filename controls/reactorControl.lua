@@ -700,7 +700,7 @@ function update()
     sleep(0.5)
 
     --reactor update check
-    shell.run("wget "..baseUrl..reactorUpdateCheck.." install")
+    shell.run("wget "..baseUrl..reactorUpdateCheck.." current_version.txt")
 
     sr = fs.open("current_version.txt", "r")
     current_version = tonumber(sr.readLine())

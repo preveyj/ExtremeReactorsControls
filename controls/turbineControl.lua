@@ -477,7 +477,7 @@ function update()
 
 	sleep(0.5)
 	
-    shell.run("wget "..baseUrl..turbine_update_check.." install")
+    shell.run("wget "..baseUrl..turbine_update_check.." current_version.txt")
 	sr = fs.open("current_version.txt", "r")
 	current_version = tonumber(sr.readLine())
 	sr.close()
