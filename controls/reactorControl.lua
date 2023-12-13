@@ -29,7 +29,7 @@ local monY
 
 ---------------GitHub download info----------
 --To get files from GitHub, use the "wget <file url> <local file name>" command. 
-baseUrl = "https://raw.githubusercontent.com/preveyj/ExtremeReactorsControls/master/"
+baseUrl = "https://raw.githubusercontent.com/preveyj/ExtremeReactorsControls/master/controls/"
 installerFile = "installer.lua"
 
 reactorControlFile = "reactorControl.lua"
